@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Results<Question: Hashable, Answer> {
-    let answers: [Question: Answer]
-    let score: Int
+public struct Results<Question: Hashable, Answer> {
+    public let answers: [Question: Answer]
+    public let score: Int
 }
