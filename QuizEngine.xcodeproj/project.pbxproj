@@ -10,6 +10,8 @@
 		801607012410C930002C2E5D /* QuizEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 801606F72410C930002C2E5D /* QuizEngine.framework */; };
 		801607122410C994002C2E5D /* FlowTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801607112410C994002C2E5D /* FlowTest.swift */; };
 		801607142410CA87002C2E5D /* Flow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801607132410CA87002C2E5D /* Flow.swift */; };
+		805C17B4241232840073C597 /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805C17B3241232840073C597 /* Results.swift */; };
+		805C17B62412328B0073C597 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805C17B52412328B0073C597 /* Router.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +31,8 @@
 		801607072410C930002C2E5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		801607112410C994002C2E5D /* FlowTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowTest.swift; sourceTree = "<group>"; };
 		801607132410CA87002C2E5D /* Flow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flow.swift; sourceTree = "<group>"; };
+		805C17B3241232840073C597 /* Results.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Results.swift; sourceTree = "<group>"; };
+		805C17B52412328B0073C597 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +77,8 @@
 			children = (
 				801606FB2410C930002C2E5D /* Info.plist */,
 				801607132410CA87002C2E5D /* Flow.swift */,
+				805C17B3241232840073C597 /* Results.swift */,
+				805C17B52412328B0073C597 /* Router.swift */,
 			);
 			path = QuizEngine;
 			sourceTree = "<group>";
@@ -196,6 +202,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				805C17B4241232840073C597 /* Results.swift in Sources */,
+				805C17B62412328B0073C597 /* Router.swift in Sources */,
 				801607142410CA87002C2E5D /* Flow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

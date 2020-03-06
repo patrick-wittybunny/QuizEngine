@@ -8,43 +8,43 @@
 
 import Foundation
 
-protocol Router {
-    typealias AnswerCallback = (String) -> Void
-    func routeTo(question: String, answerCallback: @escaping AnswerCallback)
-    func routeTo(result: [String: String])
-}
-
-class Flow {
-    private let router: Router
-    private let questions: [String]
-    private var result: [String: String] = [:]
+class Flow <Question, Answer, R: Router> where R.Question == Question, R.Answer == Answer {
+    private let router: R
+    private let questions: [Question]
+    private var answers: [Question: Answer] = [:]
+    private var scoring: ([Question: Answer]) -> Int
     
-    init(questions: [String], router: Router) {
+    init(questions: [Question], router: R, scoring: @escaping ([Question: Answer]) -> Int) {
         self.questions = questions
         self.router = router
+        self.scoring = scoring
     }
     
     func start() {
         if let firstQuestion = questions.first {
             router.routeTo(question: firstQuestion, answerCallback: nextCallback(from: firstQuestion))
         } else {
-            router.routeTo(result: [:])
+            router.routeTo(result: result())
         }
     }
     
-    private func nextCallback(from question: String) -> Router.AnswerCallback {
+    private func nextCallback(from question: Question) -> (Answer) -> Void {
         return { [weak self] in self?.routeNext(question, $0) }
     }
     
-    private func routeNext(_ question: String, _ answer: String) {
+    private func routeNext(_ question: Question, _ answer: Answer) {
         if let currentQuestionIndex = questions.firstIndex(of: question) {
-            result[question] = answer
+            answers[question] = answer
             let nextQuestionIndex = currentQuestionIndex + 1
             if nextQuestionIndex < questions.count {
                 router.routeTo(question: questions[nextQuestionIndex], answerCallback: nextCallback(from: questions[nextQuestionIndex]))
             } else {
-                router.routeTo(result: result)
+                router.routeTo(result: result())
             }
         }
+    }
+    
+    private func result() -> Results<Question, Answer> {
+        return Results(answers: answers, score: scoring(answers))
     }
 }
